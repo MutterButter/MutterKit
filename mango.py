@@ -177,7 +177,8 @@ class ConnMgr(asyncore.dispatcher_with_send):
 	def _handleRegistered(self, server):
 		print("Registered at %s" % server)
 		self._send("MODE %s +B" % self.nick)
-		self._send("PRIVMSG NickServ :id %s" % self.password)
+		if self.password:
+			self._send("PRIVMSG NickServ :id %s" % self.password)
 		self.registered = True
 		self._chanloop()
 
