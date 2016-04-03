@@ -39,7 +39,7 @@ class ConnMgr(asyncore.dispatcher_with_send):
 		self.chanmsg_re = re.compile(':(?P<nick>.*?)!\S+\s+?PRIVMSG\s+#(?P<channel>[-\w]+)\s+:(?P<message>[^\n\r]+)')
 		self.registeredRe = re.compile(':(?P<server>.*?)\s+(?:376|422)')
 		self.privmsg_re = re.compile(':(?P<nick>.*?)!~\S+\s+?PRIVMSG\s+[^#][^:]+:(?P<message>[^\n\r]+)')
-		self.userlist_re = re.compile('^:.* 353 %s (=|@) (?P<chan>.*?) :(?P<names>.*)' %  "ruur")
+		self.userlist_re = re.compile('^:.* 353 %s (=|@) (?P<chan>.*?) :(?P<names>.*)' %  self.nick)
 		self.quit_re = re.compile(':(?P<nick>.*?)!\S+\s+?QUIT\s+.*')
 		self.nc_re = re.compile(':(?P<nick>.*?)!\S+\s+?NICK\s+:\s*(?P<newnick>.*)')
 		self.kick_re = re.compile('^:([\w\d]*)!(?:~)?([\w\d\@\/\-\.]*)\sKICK\s([\w\d\#\-]*)\s([\w\d]*)\s(?:\:)?(.*)')
